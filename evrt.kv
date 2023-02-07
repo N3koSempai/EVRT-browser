@@ -1,0 +1,38 @@
+MDScreenManager:
+    id: sm
+
+
+    MDScreen:
+        MDBoxLayout:
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            MDLabel:
+                text: 'write your search'
+                halign: 'center'
+        MDBoxLayout:
+            size_hint_y: None
+            height: text_field.height
+    
+
+           
+            
+        MDTextField:
+            id: text_field
+            hint_text: "hint_text"
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            size_hint_x: 0.3
+        
+        MDIconButton:
+            pos_hint: { "center_y": 0.6}
+            pos: text_field.width - self.width + dp(8), 0
+            icon: "google"
+            halign: 'left'
+            on_press:
+                sm.current  = "main_screen"
+                
+    MDScreen:
+        name: "main_screen"
+        MDBoxLayout:
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            MDLabel:
+                text: 'ok'
+                halign: 'center'

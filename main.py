@@ -1,20 +1,12 @@
+
 from bs4 import BeautifulSoup
 import requests
 import webbrowser
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel
-headers = {"Accept-Encoding": "gzip"}
-
-
-res = requests.get("https://es.wikipedia.org/wiki/Wikipedia:Portada", headers=headers)
-print(res.status_code)
-soup = BeautifulSoup(res.text, 'html.parser')
-x= soup.prettify()
-
-f = open('index.html', 'w')
-f.write(soup.prettify())
-f.close()
-
+from kivy.lang import Builder
+from kivy.properties import StringProperty
+from kivymd.uix.relativelayout import MDRelativeLayout
 #webbrowser.open_new_tab('index.html')
 
 
@@ -26,9 +18,16 @@ class MainApp(MDApp):
         self.theme_cls.primary_palette = "Orange"
         self.theme_cls.secondary_palette = "Orange"
         
-        return MDLabel(text="hola que tal", halign="center")
+        return Builder.load_file('./evrt.kv')
     
     def search(self):
-        #res = requests.get("https://es.wikipedia.org/wiki/Wikipedia:Portada", headers=headers)
+        headers = {"Accept-Encoding": "gzip"}
+        res = requests.get("https://es.wikipedia.org/wiki/Wikipedia:Portada", headers=headers)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        x= soup.prettify()
         pass
+        f = open('index.html', 'w')
+        f.write(soup.prettify())
+        f.close()
 MainApp().run()
+
