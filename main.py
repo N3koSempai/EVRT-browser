@@ -1,7 +1,7 @@
 
 from bs4 import BeautifulSoup
 import requests
-import webbrowser
+
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel
 from kivy.lang import Builder
@@ -20,7 +20,7 @@ class MainApp(MDApp):
         
         return Builder.load_file('./evrt.kv')
     
-    def search(self):
+    def search(MDScreen):
         headers = {"Accept-Encoding": "gzip"}
         res = requests.get("https://es.wikipedia.org/wiki/Wikipedia:Portada", headers=headers)
         soup = BeautifulSoup(res.text, 'html.parser')
