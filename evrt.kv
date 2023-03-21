@@ -38,3 +38,10 @@ MDScreenManager:
             MDLabel:
                 text: 'ok'
                 halign: 'center'
+            MDIconButton:
+            pos_hint: { "center_y": 0.6}
+            pos: text_field.width - self.width + dp(8), 0
+            icon: "google"
+            halign: 'left'
+            on_press:
+                sm.current  = self.search()

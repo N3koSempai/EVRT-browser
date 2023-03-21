@@ -20,14 +20,13 @@ class MainApp(MDApp):
         self.browser = None
         return Builder.load_file('./evrt.kv')
     
-#    def search(MDScreen):
-#        headers = {"Accept-Encoding": "gzip"}
-#        res = requests.get("https://es.wikipedia.org/wiki/Wikipedia:Portada", headers=headers)
-#        soup = BeautifulSoup(res.text, 'html.parser')
-#        x= soup.prettify()
- #       pass
-#        with  open('index.html', 'w') as f:
-#            f.write(soup.prettify())
+    def search(MDScreen):
+        headers = {"Accept-Encoding": "gzip"}
+        res = requests.get("https://es.wikipedia.org/wiki/Wikipedia:Portada", headers=headers)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        x= soup.prettify()
+        with  open('index.html', 'w') as f:
+            f.write(soup.prettify())
     
 MainApp().run()
 
