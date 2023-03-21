@@ -8,7 +8,7 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivymd.uix.relativelayout import MDRelativeLayout
 #webbrowser.open_new_tab('index.html')
-
+from webview import WebView
 
 
 class MainApp(MDApp):
@@ -17,7 +17,7 @@ class MainApp(MDApp):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
         self.theme_cls.secondary_palette = "Orange"
-        
+        self.browser = None
         return Builder.load_file('./evrt.kv')
     
     def search(MDScreen):
@@ -26,8 +26,8 @@ class MainApp(MDApp):
         soup = BeautifulSoup(res.text, 'html.parser')
         x= soup.prettify()
         pass
-        f = open('index.html', 'w')
-        f.write(soup.prettify())
-        f.close()
+        with  open('index.html', 'w') as f:
+            f.write(soup.prettify())
+    
 MainApp().run()
 
